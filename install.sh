@@ -2,7 +2,7 @@
 
 read -p 'This will overwrite rc.local and ruin your networking setup. Press enter to continue (or CTRL-C to quit now)'
 cd /
-git clone https://github.com/escitalopram/wlan_kabel.git
+git clone https://github.com/escitalopram/wlan_kabel
 cd wlan_kabel
 make
 read -p 'What is the MAC address of the client (behind the bridge)?' MAC
