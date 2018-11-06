@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-read -p 'This will overwrite rc.local and ruin your networking setup. Press enter to continue (or CTRL-C to quit now)'
+read -p "This will overwrite rc.local and ruin your networking setup. Press enter to continue (or CTRL-C to quit now)"
 cd /
 git clone https://github.com/escitalopram/wlan_kabel
 cd wlan_kabel
 make
-read -p 'What is the MAC address of the client (behind the bridge)?' MAC
+read -p "What is the MAC address of the client (behind the bridge)? " MAC
 echo "#!/usr/bin/env bash
 echo \"wlan_kabel starting...\"
 /wlan_kabel/wlan_kabel wlan0 eth0 $MAC" > start.sh
@@ -29,10 +29,13 @@ iface eth0 inet manual
 auto wlan0
 iface wlan0 inet manual
 	wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf" > /etc/network/interfaces
-read -p 'What is the SSID of the network?' SSID
-read -p 'What is the password of the network?' PSK
+read -p "What is the SSID of the network? " SSID
+read -p "What is the password of the network? " PSK
 echo "country=US
 network={
 	ssid=\"$SSID\"
 	psk=\"$PSK\"
 }" > /etc/wpa_supplicant/wpa_supplicant.conf
+echo "Rebooting..."
+sleep 1
+reboot
