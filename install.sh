@@ -30,7 +30,7 @@ auto wlan0
 iface wlan0 inet manual
 	wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf" > /etc/network/interfaces
 read -p "What is the SSID of the network? " SSID
-read -p "What is the password of the network? " PSK
+read -s -p "What is the password of the network? " PSK
 echo "country=US
 network={
 	ssid=\"$SSID\"
