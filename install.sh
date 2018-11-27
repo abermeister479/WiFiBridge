@@ -20,7 +20,7 @@ chmod u+rwx packets.sh start.sh
 echo "#!/bin/sh -e
 echo \"Starting wlan_kabel\\n\"
 echo \"Boot\\n\" > /wlan_kabel/log
-/wlan_kabel/packets.sh &>> /wlan_kabel/log &
+/wlan_kabel/packets.sh >> /wlan_kabel/log 2>&1 &
 exit 0" > /etc/rc.local
 echo "auto lo
 iface lo inet loopback
